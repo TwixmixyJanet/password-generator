@@ -87,6 +87,8 @@ function activatePrompts() {
   if (confirm("Would you like to include lowercase letters?")) {
     // if TRUE concatinate lowercase letters into the input array
     inputArr = inputArr.concat(lowercaseLettersArr);
+  } else {
+
   }
 
   // CONFIRM - UPPERCASE LETTERS
@@ -111,9 +113,11 @@ function activatePrompts() {
   }
 
   // trying to return a message in case the user selects nothing
-  if (inputArr === undefined || inputArr === null) {
-    console.log("You gave us nothing to work with. Please try again.")
-  }
+  // if (inputArr === undefined || inputArr === null) {
+  //   console.log("You gave us nothing to work with. Please try again.")
+  // }
+
+  
 
   // return used to exit the function if it's true!
   return true;
@@ -138,6 +142,7 @@ function writePassword() {
 
       passwordText.value = password;
   } 
+
 }
 
 // Add event listener to generate button
