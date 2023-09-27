@@ -113,11 +113,9 @@ function activatePrompts() {
   }
 
   // trying to return a message in case the user selects nothing
-  // if (inputArr === undefined || inputArr === null) {
-  //   console.log("You gave us nothing to work with. Please try again.")
-  // }
-
-  
+  if (!inputArr) {
+    alert("You gave us nothing to work with. Please try again.")
+  }
 
   // return used to exit the function if it's true!
   return true;
