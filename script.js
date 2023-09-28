@@ -25,6 +25,9 @@
 //  PROMPT does not restart when incorrect value given
 //  undefined returned in text area when not done correctly
 
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
 // ~~~~~~~~~~~~~~~~~~~~ Assignment code here ~~~~~~~~~~~~~~~~~~~~ //
 // FUN VARIABLES
 const robot = "🤖";
@@ -63,7 +66,7 @@ function getPasswordOptions() {
   // CONFIRM - NO SELECTIONS
   if (!hasLowercaseLetters && !hasUppercaseLetters && !hasNumbers && !hasSpecialCharacters) {
     alert(`${robot} You gave us nothing to work with. Please try again.`);
-    getPasswordOptions();
+    generatePassword();
   }
 
   // CONFIRM SELECTION RESULTS
@@ -92,14 +95,14 @@ function generatePassword() {
   if(isNaN(inputCharLength) || inputCharLength < 8 || inputCharLength > 128) {
     // feedback to the user to input a valid number
     alert(`${robot} Entry not valid. This needs to be a number between 8 - 128 characters. Please try again.`);
-
-    generatePassword();
-  } 
+    var password = `${robot} Hey there! Please read the prompts carefully after pressing the "Generate Password" button.
+                    \n ${questionMark} Confused? Yeah, me too.`;
+    return password;
+  } else {
 
   // alert(`${checkbox} You chose ${inputCharLength} for your password length. Please answer the following questions. You must select "OK" for at least one option.`)
-
+  
   var options = getPasswordOptions();
-  console.log(getPasswordOptions);
   // IF STATEMENTS - if confirm option is selected as true, then add that option to all the potential options array
   if (options.hasLowercaseLetters) {
     potentialOptions = potentialOptions.concat(lowercaseLettersArr);
@@ -114,27 +117,23 @@ function generatePassword() {
     potentialOptions = potentialOptions.concat(specialCharactersArr);
   }
   
-  var pwGenerated = "";
+  var password = "";
   // loop through the input array to create the randomly generated password at the appropriate length
   for(var i = 0; i < inputCharLength; i++) {
     // Math.random to return a random between 0 and 1(0.999). Combined with Math.floor it applies the randomization to the array.
     var randomResult = Math.floor(Math.random() * potentialOptions.length);
-    // var randomIndex = Math.floor(Math.random() * array.length);
-    // var randomCharacter = array[randomIndex]
 
     // taking new pw variable and reassigning the value from nothing and adding the input array to it with the random values within our random result
-    pwGenerated += potentialOptions[randomResult]
-  }
+    password += potentialOptions[randomResult]
+  };
+  console.log(password);
 
   // RETURN THAT PASSWORD!!! (said with the same emphasis of "move that bus" from extreme home makeover: https://youtu.be/lEroUawUaSQ)
-  return pwGenerated;
+  return password;
+  };
 
-  // getRandomCharacter(lowerCaseLettersArr)
 };
 
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
