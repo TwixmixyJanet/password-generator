@@ -1,13 +1,14 @@
 # Password Generator
-[View Project Here](https://twixmixyjanet.github.io/password-generator/ "Password Generator")<br />
-![image of portfolio](assets/img/projectimage.png "image of Janet Webster's Portfolio - mobile view")
+## [View Project Here](https://twixmixyjanet.github.io/password-generator/ "Password Generator")<br />
+![image of password generator](img/projectimage.png "image of Password Generator app")
 | Technology Used    | Resource URL |
 | --------  | ------- |
 | HTML      | https://developer.mozilla.org/en-US/docs/Web/HTML |
 | CSS       | https://developer.mozilla.org/en-US/docs/Web/CSS |
+| JavaScript | https://developer.mozilla.org/en-US/docs/Web/JavaScript |
 | Git       | https://git-scm.com/ |
 | VSCode    | https://code.visualstudio.com/ |
-| Web Accessibility Evaluation Tool | https://wave.webaim.org/ |
+
 
 ## Table of Contents
 
