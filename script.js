@@ -112,9 +112,10 @@ function activatePrompts() {
     inputArr = inputArr.concat(specialCharactersArr);
   }
 
+  var arrIncludes = inputArr.includes("")
   // trying to return a message in case the user selects nothing
-  if (!inputArr) {
-    alert("You gave us nothing to work with. Please try again.")
+  if (arrIncludes) {
+    console.log("You gave us nothing to work with. Please try again.")
   }
 
   // return used to exit the function if it's true!
