@@ -32,31 +32,12 @@ var inputCharLength = 8;
 // storage for prompt input options
 var potentialOptions = [];
 
-// ARRAYS
-// to pull password input option characters
+// ARRAYS // to pull password input option characters
 var specialCharactersArr = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
-var numberArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; // potentially need to turn these into strings if they don't work
+var numberArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var lowercaseLettersArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppercaseLettersArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-// // PASSWORD CREATION FUNCTION
-// function generatePassword() {
-  // new variable for the password to be generated into
-  var pwGenerated = "";
-  // loop through the input array to create the randomly generated password at the appropriate length
-  for(var i = 0; i < inputCharLength; i++) {
-    // Math.random to return a random between 0 and 1
-    // Combined with Math.floor it applies the randomization to the array
-    var randomResult = Math.floor(Math.random() * potentialOptions.length);
-    var randomIndex = Math.floor(Math.random() * array.length);
-    var randomCharacter = array[randomIndex]
-    // taking new pw variable and reassigning the value from nothing and adding the input array to it with the random values within our random result
-    pwGenerated = pwGenerated + potentialOptions[randomResult]
-  }
-
-  // RETURN THAT PASSWORD!!! (said with the same emphasis of "move that bus" from extreme home makeover: https://youtu.be/lEroUawUaSQ)
-  return pwGenerated;
-// };
 
 // NEW FUNCTION: handles all the confirms
 function getPasswordOptions() {
@@ -64,41 +45,22 @@ function getPasswordOptions() {
 // CONFIRM - LOWERCASE LETTERS
   var hasLowercaseLetters = confirm("Would you like to include lowercase letters?");
 
-  // using if to return true/false from the input response
-  // if () {
-  //   // if TRUE concatinate lowercase letters into the input array
-  //   potentialOptions = potentialOptions.concat(lowercaseLettersArr);
-  // } 
-
   // CONFIRM - UPPERCASE LETTERS
   var hasUppercaseLetters = confirm("Would you like to include uppercase letters?");
-  // using if to return true/false from the input response
-  // if () {
-  //   // if TRUE concatinate uppercase letters into the input array
-  //   potentialOptions = potentialOptions.concat(uppercaseLettersArr);
-  // }
 
   // CONFIRM - NUMBERS
   var hasNumbers = confirm("Would you like to include numbers?");
-  // using if to return true/false from the input response
-  // if () {
-  //   // if TRUE concatinate numbers into the input array
-  //   potentialOptions = potentialOptions.concat(numberArr);
-  // }
 
   // CONFIRM - SPECIAL CHARACTERS
   var hasSpecialCharacters = confirm("Would you like to special characters?");
-  // using if to return true/false from the input response
-  // if () {
-  //   // if TRUE concatinate special characters into the input array
-  //   potentialOptions = potentialOptions.concat(specialCharactersArr);
-  // }
 
+  // CONFIRM - NO SELECTIONS
   if (!hasLowercaseLetters && !hasUppercaseLetters && !hasNumbers && !hasSpecialCharacters) {
     alert("You gave us nothing to work with. Please try again.");
     getPasswordOptions();
   }
 
+  // CONFIRM SELECTION RESULTS
   var options = {
     hasLowercaseLetters: hasLowercaseLetters,
     hasUppercaseLetters: hasUppercaseLetters,
@@ -106,6 +68,7 @@ function getPasswordOptions() {
     hasSpecialCharacters: hasSpecialCharacters
   }
 
+  // Export options to be used in generatePassword() function
   return options;
 }
 
@@ -123,18 +86,14 @@ function generatePassword() {
     // feedback to the user to input a valid number
     alert("Entry not valid. This needs to be a number between 8 - 128 characters. Please try again.");
 
-    // ****************************************************************
-    //trying to find a way to re-initialize the prompts after this failure
-    // ****************************************************************
     generatePassword();
-
   } 
 
-  // // Using backticks and ${variable} because it's easier than concatinating
-  // alert(`You chose ${inputCharLength} for your password length. Please answer the following questions. You must select "OK" for at least one option.`)
+  // Using backticks and ${variable} because it's easier than concatinating
+  alert(`You chose ${inputCharLength} for your password length. Please answer the following questions. You must select "OK" for at least one option.`)
 
   var options = getPasswordOptions();
-  console.log(options);
+  // IF STATEMENTS - if confirm option is selected as true, then add that option to all the potential options array
   if (options.hasLowercaseLetters) {
     potentialOptions = potentialOptions.concat(lowercaseLettersArr);
   }
@@ -148,7 +107,21 @@ function generatePassword() {
     potentialOptions = potentialOptions.concat(specialCharactersArr);
   }
   
-  getRandomCharacter(lowerCaseLettersArr)
+  var pwGenerated = "";
+  // loop through the input array to create the randomly generated password at the appropriate length
+  for(var i = 0; i < inputCharLength; i++) {
+    // Math.random to return a random between 0 and 1(0.999). Combined with Math.floor it applies the randomization to the array.
+    var randomResult = Math.floor(Math.random() * potentialOptions.length);
+    // var randomIndex = Math.floor(Math.random() * array.length);
+    // var randomCharacter = array[randomIndex]
+    // taking new pw variable and reassigning the value from nothing and adding the input array to it with the random values within our random result
+    pwGenerated = pwGenerated + potentialOptions[randomResult]
+  }
+
+  // RETURN THAT PASSWORD!!! (said with the same emphasis of "move that bus" from extreme home makeover: https://youtu.be/lEroUawUaSQ)
+  return pwGenerated;
+
+  // getRandomCharacter(lowerCaseLettersArr)
 };
 
 
@@ -167,90 +140,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
-// ~~~~~~~~~~~~~ FIRST ATTEMPT ~~~~~~~~~~~~~ //
-// ~~~~~~~~~~~~~    FAILURE    ~~~~~~~~~~~~~ //
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-// ~ What I learned from this attempt is that there are "many ways to pet a cat". Ultimately I was attempting to engineer it in a very backwards way which I had to individually account for each potential issue. Which means there is more chance of the code breaking (which it did as I never got it fully working). After sitting in on study sessions, going through the code drills, reviewing online best practices, and working through class activities, I think I found some better methods of "petting this cat". I learned a lot along the way and I hope it's illustrative above in the comments I made about my statements made. ~ //
-
-// function generatePassword(securePassword) {
-//   // variable arrays
-//   specialCharactersArr = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
-//   numberArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-//   lowercaseLettersArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-//   uppercaseLettersArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-
-//   // store password input components
-//   var includeLowercase;
-//   var includeUppercase;
-//   var includeNumbers;
-//   var includeSpecialChars;
-//   var inputSummary;
-
-//   // PROMPTS
-//   // prompt for length of password (8 - 128 chars)
-//   var lengthInput = parseInt(prompt("Choose length of password (8-128 characters)"));
-//   // if the input value is !not a number
-//     if (!lengthInput) {
-//       // Inform the user the input cannot be validated
-//       alert("Not validated. This needs to be a number!");
-//       // Page should refresh
-//       location.reload();
-//       // If input is less than 8 or greater than 128, user must try again!
-//     } else if (lengthInput < 8 || lengthInput > 128) {
-//       lengthInput = parseInt(prompt("Try again! Length of password must be between 8 and 128 characters"));
-//     } else {
-//       // Using backticks and ${variable} because it's easier than concatinating
-//       alert(`You chose ${lengthInput} for your password length. Please answer the following questions.`)
-//     };
-
-//       // prompt to include lowercase true/false
-//       includeLowercase = confirm("Would you like to include lowercase letters?");
-
-//       // prompt to incude uppercase true/false
-//       includeUppercase = confirm("Would you like to include uppercase letters?");
-
-//       // prompt to include numbers
-//       includeNumbers = confirm("Would you like to include numbers?");
-
-//       // prompt to include special chars true/false
-//       includeSpecialChars = confirm("Would you like to include special characters?");
-
-//   // VERIFY
-//   // verify prompt input
-//       // If all the above prompts were false
-//       if(!includeLowercase && !includeUppercase && !includeNumbers && !includeSpecialChars) {
-//         inputSummary = alert("You must choose at least one criteria (letters, numbers, or special characters)");
-//       }
-
-//       else if (includeLowercase && includeUppercase && includeNumbers && includeSpecialChars) {
-//         inputSummary = specialCharactersArr.concat(numberArr, lowercaseLettersArr, uppercaseLettersArr);
-//       }
-
-//       else {
-//         alert("Somehow you missed a criteria, try again!");
-//       }
-
-//       // store the password length input by user
-//       var passwordLength = [];
-
-//   // GENERATE
-//   // create password passed off prompt criteria
-//       // creating a loop to iterate through the concatinated array and then utilizing random math multiplied times the length
-//       for (var i = 0; i < lengthInput; i++) {
-//         var scrambleInputSummary = inputSummary[Math.floor(Math.random() * inputSummary.length)];
-//         passwordLength.push(scrambleInputSummary);
-//       }
-
-//       // turning the array into a string variable
-//       var pwGenerated = passwordLength.join("");
-//       writePassword(pwGenerated);
-//       var pwGenerated = "test";
-
-//   // OUTPUT:
-//   // Updated DOM to display password
-//   // return end result of password generated
-//   return pwGenerated;
-// }
