@@ -26,6 +26,11 @@
 //  undefined returned in text area when not done correctly
 
 // ~~~~~~~~~~~~~~~~~~~~ Assignment code here ~~~~~~~~~~~~~~~~~~~~ //
+// FUN VARIABLES
+const robot = "🤖";
+const checkbox = "✅";
+const questionMark = "❓";
+
 // BASE VARIABLES
 // length of password choice
 var inputCharLength = 8;
@@ -43,24 +48,26 @@ var uppercaseLettersArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"
 function getPasswordOptions() {
   
 // CONFIRM - LOWERCASE LETTERS
-  var hasLowercaseLetters = confirm("Would you like to include lowercase letters?");
+    // Using backticks and ${variable} because it's easier than concatinating and adding emojis is fun!
+  var hasLowercaseLetters = confirm(`${questionMark} Would you like to include lowercase letters?`);
 
   // CONFIRM - UPPERCASE LETTERS
-  var hasUppercaseLetters = confirm("Would you like to include uppercase letters?");
+  var hasUppercaseLetters = confirm(`${questionMark} Would you like to include uppercase letters?`);
 
   // CONFIRM - NUMBERS
-  var hasNumbers = confirm("Would you like to include numbers?");
+  var hasNumbers = confirm(`${questionMark} Would you like to include numbers?`);
 
   // CONFIRM - SPECIAL CHARACTERS
-  var hasSpecialCharacters = confirm("Would you like to special characters?");
+  var hasSpecialCharacters = confirm(`${questionMark} Would you like to special characters?`);
 
   // CONFIRM - NO SELECTIONS
   if (!hasLowercaseLetters && !hasUppercaseLetters && !hasNumbers && !hasSpecialCharacters) {
-    alert("You gave us nothing to work with. Please try again.");
+    alert(`${robot} You gave us nothing to work with. Please try again.`);
     getPasswordOptions();
   }
 
   // CONFIRM SELECTION RESULTS
+  // worked with the tutor to understand how I could pull the results from the confirms and place them into an object
   var options = {
     hasLowercaseLetters: hasLowercaseLetters,
     hasUppercaseLetters: hasUppercaseLetters,
@@ -84,15 +91,15 @@ function generatePassword() {
   // Check that input is not less than 8 or greater than 128
   if(isNaN(inputCharLength) || inputCharLength < 8 || inputCharLength > 128) {
     // feedback to the user to input a valid number
-    alert("Entry not valid. This needs to be a number between 8 - 128 characters. Please try again.");
+    alert(`${robot} Entry not valid. This needs to be a number between 8 - 128 characters. Please try again.`);
 
     generatePassword();
   } 
 
-  // Using backticks and ${variable} because it's easier than concatinating
-  alert(`You chose ${inputCharLength} for your password length. Please answer the following questions. You must select "OK" for at least one option.`)
+  // alert(`${checkbox} You chose ${inputCharLength} for your password length. Please answer the following questions. You must select "OK" for at least one option.`)
 
   var options = getPasswordOptions();
+  console.log(getPasswordOptions);
   // IF STATEMENTS - if confirm option is selected as true, then add that option to all the potential options array
   if (options.hasLowercaseLetters) {
     potentialOptions = potentialOptions.concat(lowercaseLettersArr);
@@ -114,8 +121,9 @@ function generatePassword() {
     var randomResult = Math.floor(Math.random() * potentialOptions.length);
     // var randomIndex = Math.floor(Math.random() * array.length);
     // var randomCharacter = array[randomIndex]
+
     // taking new pw variable and reassigning the value from nothing and adding the input array to it with the random values within our random result
-    pwGenerated = pwGenerated + potentialOptions[randomResult]
+    pwGenerated += potentialOptions[randomResult]
   }
 
   // RETURN THAT PASSWORD!!! (said with the same emphasis of "move that bus" from extreme home makeover: https://youtu.be/lEroUawUaSQ)
