@@ -19,6 +19,7 @@
 * [License](#license)
 
 ## Description:
+This is a JavaScript focused project with the goal to create a random password generator through dialog boxes.
 
 #### User Story
 - AS AN employee with access to sensitive data
@@ -45,7 +46,7 @@
 ### Lessons Learned
 
 #### FIRST ATTEMPT
-// ~ What I learned from this attempt is that there are "many ways to pet a cat". Ultimately I was attempting to engineer it in a very backwards way which I had to individually account for each potential issue. Which means there is more chance of the code breaking (which it did as I never got it fully working). After sitting in on study sessions, going through the code drills, reviewing online best practices, and working through class activities, I think I found some better methods of "petting this cat". I learned a lot along the way and I hope it's illustrative above in the comments I made about my statements made. ~ //
+// ~ What I learned from this attempt is that there are "many ways to pet a cat". Ultimately I was attempting to engineer it in a very backwards way which I had to individually account for each potential issue. Which means there is more chance of the code breaking (which it did as I never got it fully working). After sitting in on study sessions, going through the code drills, reviewing online best practices, and working through class activities, I think I found some better methods of "petting this cat". ~ //
 
 #### SECOND ATTEMPT
 // ~ I'm still trying to grasp some of the fundamentals. I went DRY this time and tried to make it as simple as possible. However, I still did some over engineering by hi-jacking the starter code because I couldn't think of how else to accomplish the task to initiate the functions that I had written. I was able to get everything to function through the for loop, but I was not able to implement a fail safe for if the user selected no character options. ~ //
