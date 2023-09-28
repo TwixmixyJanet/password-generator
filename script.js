@@ -30,7 +30,7 @@
 // length of password choice
 var inputCharLength = 8;
 // storage for prompt input options
-var inputArr = [];
+var potentialOptions = [];
 
 // ARRAYS
 // to pull password input option characters
@@ -39,28 +39,81 @@ var numberArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; // potentially need to turn thes
 var lowercaseLettersArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppercaseLettersArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-// PASSWORD CREATION FUNCTION
-function generatePassword() {
+// // PASSWORD CREATION FUNCTION
+// function generatePassword() {
   // new variable for the password to be generated into
   var pwGenerated = "";
   // loop through the input array to create the randomly generated password at the appropriate length
   for(var i = 0; i < inputCharLength; i++) {
     // Math.random to return a random between 0 and 1
     // Combined with Math.floor it applies the randomization to the array
-    var randomResult = Math.floor(Math.random() * inputArr.length);
+    var randomResult = Math.floor(Math.random() * potentialOptions.length);
+    var randomIndex = Math.floor(Math.random() * array.length);
+    var randomCharacter = array[randomIndex]
     // taking new pw variable and reassigning the value from nothing and adding the input array to it with the random values within our random result
-    pwGenerated = pwGenerated + inputArr[randomResult]
+    pwGenerated = pwGenerated + potentialOptions[randomResult]
   }
 
   // RETURN THAT PASSWORD!!! (said with the same emphasis of "move that bus" from extreme home makeover: https://youtu.be/lEroUawUaSQ)
   return pwGenerated;
-};
+// };
+
+// NEW FUNCTION: handles all the confirms
+function getPasswordOptions() {
+  
+// CONFIRM - LOWERCASE LETTERS
+  var hasLowercaseLetters = confirm("Would you like to include lowercase letters?");
+
+  // using if to return true/false from the input response
+  // if () {
+  //   // if TRUE concatinate lowercase letters into the input array
+  //   potentialOptions = potentialOptions.concat(lowercaseLettersArr);
+  // } 
+
+  // CONFIRM - UPPERCASE LETTERS
+  var hasUppercaseLetters = confirm("Would you like to include uppercase letters?");
+  // using if to return true/false from the input response
+  // if () {
+  //   // if TRUE concatinate uppercase letters into the input array
+  //   potentialOptions = potentialOptions.concat(uppercaseLettersArr);
+  // }
+
+  // CONFIRM - NUMBERS
+  var hasNumbers = confirm("Would you like to include numbers?");
+  // using if to return true/false from the input response
+  // if () {
+  //   // if TRUE concatinate numbers into the input array
+  //   potentialOptions = potentialOptions.concat(numberArr);
+  // }
+
+  // CONFIRM - SPECIAL CHARACTERS
+  var hasSpecialCharacters = confirm("Would you like to special characters?");
+  // using if to return true/false from the input response
+  // if () {
+  //   // if TRUE concatinate special characters into the input array
+  //   potentialOptions = potentialOptions.concat(specialCharactersArr);
+  // }
+
+  if (!hasLowercaseLetters && !hasUppercaseLetters && !hasNumbers && !hasSpecialCharacters) {
+    alert("You gave us nothing to work with. Please try again.");
+    getPasswordOptions();
+  }
+
+  var options = {
+    hasLowercaseLetters: hasLowercaseLetters,
+    hasUppercaseLetters: hasUppercaseLetters,
+    hasNumbers: hasNumbers,
+    hasSpecialCharacters: hasSpecialCharacters
+  }
+
+  return options;
+}
 
 // INPUT PROMPTS FUNCTION
 // generatePassword became too large and clunky, separating out prompts
-function activatePrompts() {
+function generatePassword() {
   // reset input array to be empty, in case multiple passwords need generated
-  inputArr = [];
+  potentialOptions = [];
   // updating the var inputCharLength to the user input, setting to parseInt to turn it into a number
   inputCharLength = parseInt(prompt("Choose length of password (8-128 characters)"));
 
@@ -73,53 +126,29 @@ function activatePrompts() {
     // ****************************************************************
     //trying to find a way to re-initialize the prompts after this failure
     // ****************************************************************
-    writePassword();
+    generatePassword();
 
-    // return used to exit the function if it's false
-    return false;
   } 
 
-  // Using backticks and ${variable} because it's easier than concatinating
-  alert(`You chose ${inputCharLength} for your password length. Please answer the following questions. You must select "OK" for at least one option.`)
+  // // Using backticks and ${variable} because it's easier than concatinating
+  // alert(`You chose ${inputCharLength} for your password length. Please answer the following questions. You must select "OK" for at least one option.`)
 
-  // CONFIRM - LOWERCASE LETTERS
-  // using if to return true/false from the input response
-  if (confirm("Would you like to include lowercase letters?")) {
-    // if TRUE concatinate lowercase letters into the input array
-    inputArr = inputArr.concat(lowercaseLettersArr);
-  } else {
-
+  var options = getPasswordOptions();
+  console.log(options);
+  if (options.hasLowercaseLetters) {
+    potentialOptions = potentialOptions.concat(lowercaseLettersArr);
   }
-
-  // CONFIRM - UPPERCASE LETTERS
-  // using if to return true/false from the input response
-  if (confirm("Would you like to include uppercase letters?")) {
-    // if TRUE concatinate uppercase letters into the input array
-    inputArr = inputArr.concat(uppercaseLettersArr);
+  if (options.hasUppercaseLetters) {
+    potentialOptions = potentialOptions.concat(uppercaseLettersArr);
   }
-
-  // CONFIRM - NUMBERS
-  // using if to return true/false from the input response
-  if (confirm("Would you like to include numbers?")) {
-    // if TRUE concatinate numbers into the input array
-    inputArr = inputArr.concat(numberArr);
+  if (options.hasNumbers) {
+    potentialOptions = potentialOptions.concat(numberArr);
   }
-
-  // CONFIRM - SPECIAL CHARACTERS
-  // using if to return true/false from the input response
-  if (confirm("Would you like to special characters?")) {
-    // if TRUE concatinate special characters into the input array
-    inputArr = inputArr.concat(specialCharactersArr);
+  if (options.hasSpecialCharacters) {
+    potentialOptions = potentialOptions.concat(specialCharactersArr);
   }
-
-  var arrIncludes = inputArr.includes("")
-  // trying to return a message in case the user selects nothing
-  if (arrIncludes) {
-    console.log("You gave us nothing to work with. Please try again.")
-  }
-
-  // return used to exit the function if it's true!
-  return true;
+  
+  getRandomCharacter(lowerCaseLettersArr)
 };
 
 
@@ -128,19 +157,11 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  // trying something here! // should return true or false!!
-  var promptSuccess = activatePrompts();
 
-  if (promptSuccess) {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-  //sorry for re-arranging your code...
-
-
-      var password = generatePassword();
-      var passwordText = document.querySelector("#password");
-
-      passwordText.value = password;
-  } 
+  passwordText.value = password;
 
 }
 
