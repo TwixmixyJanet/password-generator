@@ -19,7 +19,8 @@
 * [License](#license)
 
 ## Description:
-This is a JavaScript focused project with the goal to create a random password generator through dialog boxes.
+This is a JavaScript focused project with the goal to create a random password generator through dialog boxes.<br />
+Time Spent: [![wakatime](https://wakatime.com/badge/user/5829d3fb-d499-4e31-bed0-2d4b3e092db3/project/edc703e4-e858-4d33-8ecf-94d6e653a8f6.svg)](https://wakatime.com/badge/user/5829d3fb-d499-4e31-bed0-2d4b3e092db3/project/edc703e4-e858-4d33-8ecf-94d6e653a8f6)
 
 #### User Story
 - AS AN employee with access to sensitive data
