@@ -151,6 +151,8 @@ generateBtn.addEventListener("click", writePassword);
 
 // ~~~~~~~~~~~~~ FIRST ATTEMPT ~~~~~~~~~~~~~ //
 // ~~~~~~~~~~~~~    FAILURE    ~~~~~~~~~~~~~ //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+// ~ What I learned from this attempt is that there are "many ways to pet a cat". Ultimately I was attempting to engineer it in a very backwards way which I had to individually account for each potential issue. Which means there is more chance of the code breaking (which it did as I never got it fully working). After sitting in on study sessions, going through the code drills, reviewing online best practices, and working through class activities, I think I found some better methods of "petting this cat". I learned a lot along the way and I hope it's illustrative above in the comments I made about my statements made. ~ //
 
 // function generatePassword(securePassword) {
 //   // variable arrays
