@@ -20,7 +20,14 @@
 
 ## Description:
 This is a JavaScript focused project with the goal to create a random password generator through dialog boxes.<br />
-Active Coding Time Spent: [![wakatime](https://wakatime.com/badge/user/5829d3fb-d499-4e31-bed0-2d4b3e092db3/project/edc703e4-e858-4d33-8ecf-94d6e653a8f6.svg)](https://wakatime.com/badge/user/5829d3fb-d499-4e31-bed0-2d4b3e092db3/project/edc703e4-e858-4d33-8ecf-94d6e653a8f6)
+Active Coding Time Spent: [![wakatime](https://wakatime.com/badge/user/5829d3fb-d499-4e31-bed0-2d4b3e092db3/project/edc703e4-e858-4d33-8ecf-94d6e653a8f6.svg)](https://wakatime.com/badge/user/5829d3fb-d499-4e31-bed0-2d4b3e092db3/project/edc703e4-e858-4d33-8ecf-94d6e653a8f6)<br />
+<br />
+How to use this app:
+
+* Click button "Generate Password"
+* Answer criteria prompts
+* Receive unique password!
+* Select, copy, and utilize as needed
 
 #### User Story
 - AS AN employee with access to sensitive data
@@ -53,7 +60,11 @@ Active Coding Time Spent: [![wakatime](https://wakatime.com/badge/user/5829d3fb-
 // ~ I'm still trying to grasp some of the fundamentals. I went DRY this time and tried to make it as simple as possible. However, I still did some over engineering by hi-jacking the starter code because I couldn't think of how else to accomplish the task to initiate the functions that I had written. I was able to get everything to function through the for loop, but I was not able to implement a fail safe for if the user selected no character options. ~ //
 
 #### THIRD ATTEMPT
-// ~ I worked with a tutor to review my work. We re-engineered my if statement confirms to be variables, so that we could store the true/false result. We then collected the results into an object, so that we could pass them to another function and use them in a for loop to make the giant array and then randomly select the characters from there.
+// ~ I worked with a tutor to review my work. We re-engineered my if statement confirms to be variables, so that we could store the true/false result. We then collected the results into an object, so that we could pass them to another function and use them in a for loop to make the giant array and then randomly select the characters from there. ~ //
+
+#### WRAPPING UP
+// ~ I was still receiving an undefined error when the length prompt was failing, so I did some scope review via the inspect sources in the browser (Thanks to [Jorge Castro](https://github.com/Jacastro619/) for the tip) to find that my return password wasn't retaining the final password string. I ended up needing to wrap the password generation math in an else statement ~ // <br />
+[![code snippet](img/codesnippet.png)]
 
 ## Installation
 
@@ -66,7 +77,7 @@ Active Coding Time Spent: [![wakatime](https://wakatime.com/badge/user/5829d3fb-
 
 ## Usage
 
-This one page website portfolio can be used as a base template. Simply swap out information, work, skills, and contact you may need for it to match your requirements.
+This is a password generator designed to produce a randomly generated password through various criteria. If you would like to use this app follow the installation steps and curate it to your needs. If you would like to use this app to generate a password, follow the steps under the description above and click the link at the top of this page.
 
 ## License
 
