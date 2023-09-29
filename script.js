@@ -100,7 +100,7 @@ function generatePassword() {
     return password;
   } else {
 
-  // alert(`${checkbox} You chose ${inputCharLength} for your password length. Please answer the following questions. You must select "OK" for at least one option.`)
+  alert(`${checkbox} You chose ${inputCharLength} for your password length. Please answer the following questions. You must select "OK" for at least one option.`)
   
   var options = getPasswordOptions();
   // IF STATEMENTS - if confirm option is selected as true, then add that option to all the potential options array
