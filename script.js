@@ -126,7 +126,6 @@ function generatePassword() {
     // taking new pw variable and reassigning the value from nothing and adding the input array to it with the random values within our random result
     password += potentialOptions[randomResult]
   };
-  console.log(password);
 
   // RETURN THAT PASSWORD!!! (said with the same emphasis of "move that bus" from extreme home makeover: https://youtu.be/lEroUawUaSQ)
   return password;
