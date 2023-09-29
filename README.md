@@ -7,6 +7,7 @@
 | CSS       | https://developer.mozilla.org/en-US/docs/Web/CSS |
 | JavaScript | https://developer.mozilla.org/en-US/docs/Web/JavaScript |
 | Git       | https://git-scm.com/ |
+| GitHub     | https://github.com/ |
 | VSCode    | https://code.visualstudio.com/ |
 
 
@@ -20,7 +21,7 @@
 
 ## Description:
 This is a JavaScript focused project with the goal to create a random password generator through dialog boxes.<br />
-Active Coding Time Spent: [![wakatime](https://wakatime.com/badge/user/5829d3fb-d499-4e31-bed0-2d4b3e092db3/project/edc703e4-e858-4d33-8ecf-94d6e653a8f6.svg)](https://wakatime.com/badge/user/5829d3fb-d499-4e31-bed0-2d4b3e092db3/project/edc703e4-e858-4d33-8ecf-94d6e653a8f6)<br />
+Active Coding Time Spent: ![wakatime](https://wakatime.com/badge/user/5829d3fb-d499-4e31-bed0-2d4b3e092db3/project/edc703e4-e858-4d33-8ecf-94d6e653a8f6.svg)<br />
 <br />
 How to use this app:
 
@@ -64,7 +65,7 @@ How to use this app:
 
 #### WRAPPING UP
 // ~ I was still receiving an undefined error when the length prompt was failing, so I did some scope review via the inspect sources in the browser (Thanks to [Jorge Castro](https://github.com/Jacastro619/) for the tip) to find that my return password wasn't retaining the final password string. I ended up needing to wrap the password generation math in an else statement ~ // <br />
-[![code snippet](img/codesnippet.png)]
+![code snippet](img/codesnippet.png)
 
 ## Installation
 
